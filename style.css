@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #eeeeee;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
 }
@@ -20,7 +20,7 @@ input:focus {
 /* Heading */
 
 header {
-    background: url("https://images.unsplash.com/photo-1597117489038-bba57da6c58f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80")
+    background: url("https://images.unsplash.com/photo-1594129460527-f584fbb274d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80")
         no-repeat center center/cover;
     color: #fff;
     display: flex;
@@ -46,7 +46,7 @@ header::before {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 header * {
@@ -95,11 +95,18 @@ form button:focus {
 /* Body */
 
 .btn {
-    background-color: #8d56fd;
+    background-color: hsl(170, 74%, 44%);
     border: 0;
     border-radius: 10px;
     color: #fff;
-    padding: 4px 10px;
+    padding: 7px 13px;
+    transition: all 0.3s ease-out;
+}
+
+.btn:focus,
+.btn:hover {
+    outline: none;
+    background: hsl(170, 74%, 34%);
 }
 
 ul.songs {
@@ -117,7 +124,7 @@ ul.songs li {
 .container {
     margin: 30px auto;
     max-width: 100%;
-    width: 500px;
+    width: 800px;
 }
 
 .container h2 {

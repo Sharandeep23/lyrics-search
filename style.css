@@ -59,14 +59,15 @@ form input {
     font-size: 1.2rem;
     padding: 15px 30px;
     width: 100%;
-    height: 3.1rem;
+    height: 50.4px;
     transition: all 0.2s ease-out;
 }
 
 form button {
     position: absolute;
-    top: 1px;
-    right: 1px;
+    top: 1.2px;
+    right: 0.8px;
+    height: 48.4px;
     background-color: #393e46;
     border: 0;
     border-radius: 50px;
@@ -161,12 +162,13 @@ ul.songs li {
     }
     form input {
         font-size: inherit;
-        height: 44.8px;
+        height: 42.8px;
         padding: 12px 28px;
     }
     form button {
-        top: 2px;
-        right: 1px;
+        height: 40.8px;
+        top: 1.2px;
+        right: 0.8px;
         font-size: inherit;
         padding: 12px 28px;
     }

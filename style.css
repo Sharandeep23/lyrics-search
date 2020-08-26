@@ -157,15 +157,18 @@ ul.songs li {
     /* Forms */
     form {
         width: 300px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
     form input {
         font-size: inherit;
-        height: 3rem;
-        padding: 12px 30px;
+        height: 44.8px;
+        padding: 12px 28px;
     }
     form button {
+        top: 2px;
+        right: 1px;
         font-size: inherit;
-        padding: 9px 26px;
+        /* height: 2.1rem; */
+        padding: 12px 28px;
     }
 }

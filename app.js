@@ -15,8 +15,8 @@ formEl.addEventListener("submit", (e) => {
 
 // Get lyrics event listener
 resultEl.addEventListener("click", ({ target }) => {
-    // Filtering clicks
-    if (target.tagName === "BUTTON") {
+    // Filtering clicks and to avoid back we also check id
+    if (target.tagName === "BUTTON" && !target.id) {
         // Data attributes can be accessed through dataset object
         const artist = target.dataset.artist;
         const songTitle = target.dataset.songTitle;
@@ -26,10 +26,7 @@ resultEl.addEventListener("click", ({ target }) => {
 
 // Get songs searching  by song or artist's name
 function getSongs(term) {
-    axios
-        .get(`${apiURL}/suggest/${term}`)
-        .then(({ data }) => showSongs(data))
-        .catch((err) => console.log(err));
+    axios.get(`${apiURL}/suggest/${term}`).then(({ data }) => showSongs(data));
 }
 
 // Get previous or next songs
@@ -39,8 +36,7 @@ function getMoreSongs(url) {
     // Don't know why, but this work around doesn't work with live-server
     axios
         .get(`https://cors-anywhere.herokuapp.com/${url}`)
-        .then(({ data }) => showSongs(data))
-        .catch((err) => console.log(err));
+        .then(({ data }) => showSongs(data));
 }
 
 // Show data to the DOM
@@ -70,19 +66,21 @@ function showSongs(data) {
 
 // Get Lyrics funciton
 function getLyrics(artist, songTitle) {
-    axios
-        .get(`${apiURL}/v1/${artist}/${songTitle}`)
-        .then(({ data }) => {
-            const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+    axios.get(`${apiURL}/v1/${artist}/${songTitle}`).then(({ data }) => {
+        // REGEX
+        const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
 
-            result.innerHTML = `
-                <h2><strong>${artist}</strong> - ${songTitle}</h2>
-                <span>${lyrics}</span>`;
+        result.innerHTML = `
+                <span>
+                    <h2><strong>${artist}</strong> - ${songTitle}</h2>
+                    <span>${lyrics}</span>
+                </span>
+                <button class="btn" id="back" onclick="getSongs('${searchEl.value.trim()}')">Back</button>
+                `;
 
-            // We don't to see the next or prev when viewing lyrics
-            more.innerHTML = "";
-        })
-        .catch((err) => console.log(err));
+        // We don't to see the next or prev when viewing lyrics
+        more.innerHTML = "";
+    });
 }
 
 // Some songs have no lyrics!😱 Thanks to the API!

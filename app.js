@@ -15,7 +15,7 @@ formEl.addEventListener("submit", (e) => {
 
 // Get lyrics event listener
 resultEl.addEventListener("click", ({ target }) => {
-    // Filtering clicks and to avoid back we also check id
+    // Filtering clicks and to avoid "Back" button we also check id
     if (target.tagName === "BUTTON" && !target.id) {
         // Data attributes can be accessed through dataset object
         const artist = target.dataset.artist;
@@ -25,11 +25,14 @@ resultEl.addEventListener("click", ({ target }) => {
 });
 
 // Get songs searching  by song or artist's name
+// AJAX 1
+
 function getSongs(term) {
     axios.get(`${apiURL}/suggest/${term}`).then(({ data }) => showSongs(data));
 }
 
 // Get previous or next songs
+// AJAX 2
 
 function getMoreSongs(url) {
     // To bypass CORS, We've to prefix 'https://cors-anywhere.herokuapp.com/' to the url
@@ -65,6 +68,8 @@ function showSongs(data) {
 }
 
 // Get Lyrics funciton
+// AJAX 3
+
 function getLyrics(artist, songTitle) {
     axios.get(`${apiURL}/v1/${artist}/${songTitle}`).then(({ data }) => {
         // REGEX
